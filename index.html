@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Hello</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card" id="intro">
+  <div class="eyebrow">A little note for you</div>
+  <div class="icon">✉️</div>
+  <h1>Hi, stranger!</h1>
+  <p>Ada sedikit pesan buat kamu.<br>
+  Kita memang belum lama kenal, tapi boleh aku menyampaikan sesuatu?</p>
+  <button class="primary" onclick="openLetter()">Buka pesannya 💙</button>
+  <div class="note">Just a small hello, nothing more.</div>
+</main>
+
+<main class="card" id="letter">
+  <div class="eyebrow">From me, to you</div>
+  <div class="icon">🌷</div>
+  <h1>Can we know each other?</h1>
+  <p>Jujur, kita memang belum lama kenal. Tapi entah kenapa, aku tertarik buat mengenal kamu lebih jauh.<br><br>
+  Nggak ada maksud buru-buru. Aku cuma ingin tahu lebih banyak tentang kamu. Siapa tahu, dari perkenalan sederhana ini bisa jadi sesuatu yang indah. 💙</p>
+  <h1 style="font-size:21px">Mau kenalan lebih dekat?</h1>
+  <button class="primary" onclick="answerYes()">Mau dong! 💗</button>
+  <button class="secondary" onclick="answerMaybe()">Boleh aja :)</button>
+  <button class="secondary" onclick="answerFriend()">Jadi teman aja 🤝</button>
+  <div class="note">No pressure, just a little hello.</div>
+</main>
+
+<main class="card" id="reply">
+  <div class="icon" id="replyIcon">🥹💙</div>
+  <h1 id="replyTitle">Yay, senang dengarnya!</h1>
+  <p id="replyText">Kalau begitu, semoga kita bisa saling mengenal lebih jauh. Mulai dari obrolan sederhana dulu, ya. 😊</p>
+  <div class="note">Thanks for reading my little message.</div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
