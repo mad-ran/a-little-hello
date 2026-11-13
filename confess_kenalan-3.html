@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Hello</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;padding:22px;overflow:hidden;
+font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#385875;
+background:linear-gradient(135deg,#dceeff,#f8fbff)}
+.card{width:min(100%,400px);padding:38px 27px;text-align:center;position:relative;z-index:2;
+border:1px solid #fff;border-radius:28px;background:#ffffffdf;
+box-shadow:0 18px 55px #739fc52b;backdrop-filter:blur(10px);animation:fade .6s ease}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8aaac8;margin-bottom:18px}
+.icon{font-size:48px;margin-bottom:18px;animation:float 2.2s ease-in-out infinite}
+h1{font-size:27px;letter-spacing:-.7px;margin-bottom:12px;color:#416b91}
+p{font-size:14px;line-height:1.9;color:#71899f;margin-bottom:22px}
+button{border:0;border-radius:30px;padding:13px 23px;margin:5px;font-size:14px;font-weight:650;cursor:pointer;transition:.2s}
+.primary{background:#83b5e5;color:white;box-shadow:0 7px 18px #83b5e54d}
+.primary:hover{background:#659fd8;transform:translateY(-2px)}
+.secondary{background:#edf3f9;color:#67809a}
+#letter,#reply{display:none}
+.note{font-size:12px;color:#9aafc2;margin-top:17px}
+.float-heart{position:fixed;bottom:-30px;z-index:1;pointer-events:none;opacity:.55;animation:rise linear forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@keyframes float{50%{transform:translateY(-7px)}}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<main class="card" id="intro">
+  <div class="eyebrow">A little note for you</div>
+  <div class="icon">✉️</div>
+  <h1>Hi, stranger!</h1>
+  <p>Ada sedikit pesan buat kamu.<br>
+  Kita memang belum lama kenal, tapi boleh aku menyampaikan sesuatu?</p>
+  <button class="primary" onclick="openLetter()">Buka pesannya 💙</button>
+  <div class="note">Just a small hello, nothing more.</div>
+</main>
+
+<main class="card" id="letter">
+  <div class="eyebrow">From me, to you</div>
+  <div class="icon">🌷</div>
+  <h1>Can we know each other?</h1>
+  <p>Jujur, kita memang belum lama kenal. Tapi entah kenapa, aku tertarik buat mengenal kamu lebih jauh.<br><br>
+  Nggak ada maksud buru-buru. Aku cuma ingin tahu lebih banyak tentang kamu. Siapa tahu, dari perkenalan sederhana ini bisa jadi sesuatu yang indah. 💙</p>
+  <h1 style="font-size:21px">Mau kenalan lebih dekat?</h1>
+  <button class="primary" onclick="answerYes()">Mau dong! 💗</button>
+  <button class="secondary" onclick="answerMaybe()">Boleh aja :)</button>
+  <button class="secondary" onclick="answerFriend()">Jadi teman aja 🤝</button>
+  <div class="note">No pressure, just a little hello.</div>
+</main>
+
+<main class="card" id="reply">
+  <div class="icon" id="replyIcon">🥹💙</div>
+  <h1 id="replyTitle">Yay, senang dengarnya!</h1>
+  <p id="replyText">Kalau begitu, semoga kita bisa saling mengenal lebih jauh. Mulai dari obrolan sederhana dulu, ya. 😊</p>
+  <div class="note">Thanks for reading my little message.</div>
+</main>
+
+<script>
+function show(id){['intro','letter','reply'].forEach(x=>document.getElementById(x).style.display=x===id?'block':'none')}
+function openLetter(){show('letter')}
+const waNumber = "6285778840599";
+function sendWhatsApp(message){
+  const url = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+  window.location.href = url;
+}
+function answerYes(){
+  document.getElementById('replyIcon').textContent='🥹💗';
+  document.getElementById('replyTitle').textContent='Yay, senang dengarnya!';
+  document.getElementById('replyText').textContent='Makasih sudah jawab! WhatsApp akan terbuka dengan pesan yang bisa kamu kirim. 💙';
+  show('reply');
+  setTimeout(()=>sendWhatsApp("Aku mau kenalan lebih dekat! 💗"),500);
+}
+function answerMaybe(){
+  document.getElementById('replyIcon').textContent='🌼';
+  document.getElementById('replyTitle').textContent='That’s okay!';
+  document.getElementById('replyText').textContent='Makasih sudah jawab! WhatsApp akan terbuka dengan pesan yang bisa kamu kirim. 💙';
+  show('reply');
+  setTimeout(()=>sendWhatsApp("Boleh aja, kita kenalan dulu ya :) 🌷"),500);
+}
+function answerFriend(){
+  document.getElementById('replyIcon').textContent='🤝💙';
+  document.getElementById('replyTitle').textContent='Teman juga nggak apa-apa!';
+  document.getElementById('replyText').textContent='Makasih sudah jujur. Semoga kita tetap bisa berteman dan saling mengenal dengan nyaman. 💙';
+  show('reply');
+  setTimeout(()=>sendWhatsApp("Aku lebih nyaman kalau kita jadi teman dulu ya 🤝💙"),500);
+}
+function heart(){const e=document.createElement('span');e.className='float-heart';e.textContent=Math.random()>.5?'♡':'💙';e.style.left=Math.random()*100+'vw';e.style.fontSize=(14+Math.random()*13)+'px';e.style.animationDuration=(6+Math.random()*5)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),11000)}
+setInterval(heart,850);
+</script>
+</body>
+</html>
